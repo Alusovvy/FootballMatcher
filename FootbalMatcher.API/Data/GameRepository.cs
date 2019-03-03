@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using FootbalMatcher.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -41,7 +42,7 @@ namespace FootbalMatcher.API.Data
 
         public async Task<List<Game>> GetGames(string location)
         {
-          var game = await _context.Games.ToListAsync();
+          var game = await  _context.Games.Where(x => x.Location == location).ToListAsync();
          
             return game;
         }
