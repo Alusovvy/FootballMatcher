@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootbalMatcher.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190302201812_UserModel")]
-    partial class UserModel
+    [Migration("20190303150809_GameModelFixed")]
+    partial class GameModelFixed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,10 +18,34 @@ namespace FootbalMatcher.API.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
 
+            modelBuilder.Entity("FootbalMatcher.API.Models.Game", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("HostName");
+
+                    b.Property<string>("Location");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Slots");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Games");
+                });
+
             modelBuilder.Entity("FootbalMatcher.API.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("GameId");
 
                     b.Property<byte[]>("PasswordHash");
 
@@ -30,6 +54,8 @@ namespace FootbalMatcher.API.Migrations
                     b.Property<string>("Username");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GameId");
 
                     b.ToTable("Users");
                 });
@@ -44,6 +70,13 @@ namespace FootbalMatcher.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("FootbalMatcher.API.Models.User", b =>
+                {
+                    b.HasOne("FootbalMatcher.API.Models.Game")
+                        .WithMany("Participants")
+                        .HasForeignKey("GameId");
                 });
 #pragma warning restore 612, 618
         }
