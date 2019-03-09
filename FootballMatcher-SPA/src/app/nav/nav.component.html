@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-      <a class="navbar-brand" href="#">Football Matcher - Don't watch lonely!</a>
+      <a class="navbar-brand" routerLink="['/home']">Football Matcher - Don't watch lonely!</a>
 
-      <ul class="navbar-nav mr-auto">
-        <li *ngIf="loggedIn()" class="nav-item">
-          <a class="nav-link" href="#">Games</a>
+      <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
+        <li  class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/games']">Games</a>
         </li>
-        <li *ngIf="loggedIn()" class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/messages']">Messages </a>
         </li>
       </ul>
   

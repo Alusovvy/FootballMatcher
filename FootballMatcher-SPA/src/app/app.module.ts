@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,10 +11,15 @@ import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { GameListComponent } from './game-list/game-list.component';
+import { MessagesComponent } from './messages/messages.component';
 
 import { ErrorInterceptorProvider } from '../app/services/error.interceptor';
 import { AuthService } from '../app/services/auth.service';
 import { AlertifyService } from './services/alertify.service';
+import { appRoutes } from './routes';
+
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
    declarations: [
@@ -21,19 +27,23 @@ import { AlertifyService } from './services/alertify.service';
       ValueComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      GameListComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
       FormsModule,
-      BsDropdownModule.forRoot()
+      BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
       ErrorInterceptorProvider,
-      AlertifyService
+      AlertifyService,
+      AuthGuard
    ],
    bootstrap: [
       AppComponent
