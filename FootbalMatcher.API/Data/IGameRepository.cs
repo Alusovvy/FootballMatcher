@@ -9,7 +9,9 @@ namespace FootbalMatcher.API.Data
          Task<Game> CreateGame(Game game);
          Task<Game> EditGame(Game game);
          Task<Game> DeleteGame(int id);
-         Task<List<Game>> GetGames(string location);
+         Task<IEnumerable<Game>> GetGames(string location);
          Task<Game> JoinGame(User user, int id);
+
+         Task<Game> GetGame(int id);
     }
 }

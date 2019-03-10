@@ -14,12 +14,13 @@ namespace FootbalMatcher.API.Data
             _context = context;
 
         }
+
         public async Task<Game> CreateGame(Game game)
         {
            await _context.Games.AddAsync(game);
            await _context.SaveChangesAsync();
 
-           return game;
+            return game;
 
         }
 
@@ -28,7 +29,7 @@ namespace FootbalMatcher.API.Data
             var game = await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
              _context.Games.Remove(game);
              await _context.SaveChangesAsync();
-            
+
             return game;
         }
 
@@ -38,12 +39,20 @@ namespace FootbalMatcher.API.Data
            await _context.SaveChangesAsync();
 
            return game;
+
         }
 
-        public async Task<List<Game>> GetGames(string location)
+        public async Task<IEnumerable<Game>> GetGames(string location)
         {
           var game = await  _context.Games.Where(x => x.Location == location).ToListAsync();
          
+            return game;
+        }
+
+        public async Task<Game> GetGame(int id)
+        {
+            var game = await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
+
             return game;
         }
 
@@ -51,5 +60,6 @@ namespace FootbalMatcher.API.Data
         {
             throw new System.NotImplementedException();
         }
+
     }
 }

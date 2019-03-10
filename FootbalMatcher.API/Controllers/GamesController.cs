@@ -30,9 +30,10 @@ namespace FootbalMatcher.API.Controllers
 
         [HttpPost("{id}")]
 
-        public async Task<IActionResult> DeleteGame(int id) 
+        public IActionResult DeleteGame(int id) 
         {
-            await _game.DeleteGame(id);
+            // await _game.DeleteGame(id);
+
 
             return Ok();
         }
@@ -57,6 +58,15 @@ namespace FootbalMatcher.API.Controllers
             var games = await _game.GetGames(game.Location);
 
             return Ok(games);
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetGame(int id) {
+            
+            var game = await _game.GetGame(id);
+
+            return Ok(game);
         }
     }
 }
