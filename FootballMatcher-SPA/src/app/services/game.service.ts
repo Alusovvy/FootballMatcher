@@ -1,15 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { Game } from '../models/game';
+
+
+const httpOption = {
+  headers: new HttpHeaders({
+    Authorization: 'Bearer ' + localStorage.getItem('token')
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  baseUrl = 'http://localhost:5000/api/auth/';
+  baseUrl = environment.apiUrl;
 constructor(private http: HttpClient) { }
 
-getGameList(location: any) {
-  return this.http.post(this.baseUrl + 'games', location);
-}
+getGames(location): Observable<Game[]> {
+  return this.http.get<Game[]>(this.baseUrl + 'games/' + location, httpOption);
 
 }
+}
+
+

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../services/game.service';
+import { Game } from '../models/game';
+import { AlertifyService } from '../services/alertify.service';
 
 @Component({
   selector: 'app-game-list',
@@ -8,15 +10,19 @@ import { GameService } from '../services/game.service';
 })
 export class GameListComponent implements OnInit {
   location: any;
-  gamesList: any;
-  constructor(private gameService: GameService) { }
+  games: Game[];
+  constructor(private gameService: GameService, private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
 
   findGame() {
-    this.gamesList = this.gameService.getGameList(this.location);
-    console.log(this.gamesList);
+    this.gameService.getGames(this.location).subscribe((games: Game[]) => {
+      this.games = games;
+    }, error => {
+      this.alertify.error(error);
+    });
+
   }
 
 }

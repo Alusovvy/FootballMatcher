@@ -20,6 +20,7 @@ import { AlertifyService } from './services/alertify.service';
 import { appRoutes } from './routes';
 
 import { AuthGuard } from './guards/auth.guard';
+import { GameService } from './services/game.service';
 
 @NgModule({
    declarations: [
@@ -43,7 +44,8 @@ import { AuthGuard } from './guards/auth.guard';
       AuthService,
       ErrorInterceptorProvider,
       AlertifyService,
-      AuthGuard
+      AuthGuard,
+      GameService
    ],
    bootstrap: [
       AppComponent

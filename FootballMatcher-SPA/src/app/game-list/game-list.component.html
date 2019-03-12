@@ -13,6 +13,14 @@
             <button class="btn btn-success mt-1" (onclick)="findGame()" type="submit">Search</button>
           </div>
         </form>
+
+        <ul>
+          <li *ngFor="let game of games">
+            {{game.Name}} {{game.description}} {{game.id}}
+            </li>
+
+          
+        </ul>
       </div>
     </div>
   </div>

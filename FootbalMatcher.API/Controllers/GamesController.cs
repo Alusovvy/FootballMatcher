@@ -48,10 +48,12 @@ namespace FootbalMatcher.API.Controllers
             return Ok(game);
         }
 
-        [HttpGet]
+        [HttpGet("{location}")]
 
-        public async Task<IActionResult> GetGames(Game game) 
+        public async Task<IActionResult> GetGames(string location) 
         {
+            Game game = new Game();
+            game.Location = location;
             if (game.Location == null)
                 return NotFound();
             game.Location = game.Location.ToLower();
@@ -60,7 +62,7 @@ namespace FootbalMatcher.API.Controllers
             return Ok(games);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
 
         public async Task<IActionResult> GetGame(int id) {
             
