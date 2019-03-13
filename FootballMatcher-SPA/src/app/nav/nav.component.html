@@ -9,6 +9,15 @@
         <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/messages']">Messages </a>
         </li>
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/game']">Host Game </a>
+          </li>
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/game']">Created Games </a>
+            </li>
+        <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/game']">Joined Games </a>
+              </li>
       </ul>
   
       <div *ngIf="loggedIn()" class="dropdown mr-3" dropdown>

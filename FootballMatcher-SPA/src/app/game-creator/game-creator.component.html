@@ -1,0 +1,28 @@
+<div class="image">
+  <h1>Create Your Game</h1>
+
+    <form #gameCreateForm="ngForm">
+
+        <hr>
+      
+        <div class="form-group">
+          <input type="text" class="form-control" required name="name" [(ngModel)]="game.Name" placeholder="Give your hosted game a name!">
+        </div>
+      
+    <div class="form-group">
+          <input type="text" class="form-control" required name="description" [(ngModel)]="game.description" placeholder="Description">
+        </div>
+      <div class="form-group">
+            <input type="text" class="form-control" required name="location" [(ngModel)]="game.location" placeholder="Location">
+          </div>
+      <div class="form-group">
+              <input type="text" class="form-control" required name="slots" [(ngModel)]="game.slots" placeholder="slots">
+            </div>
+      
+        <div class="form-group text-center">
+          <button class="btn btn-success mr-1" type="submit">Create game</button>
+          <button class="btn btn-danger" type="button" >Cancel</button>
+        </div>
+        
+      </form>
+</div>

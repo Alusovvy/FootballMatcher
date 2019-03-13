@@ -21,6 +21,7 @@ import { appRoutes } from './routes';
 
 import { AuthGuard } from './guards/auth.guard';
 import { GameService } from './services/game.service';
+import { GameCreatorComponent } from './game-creator/game-creator.component';
 
 @NgModule({
    declarations: [
@@ -30,7 +31,8 @@ import { GameService } from './services/game.service';
       HomeComponent,
       RegisterComponent,
       GameListComponent,
-      MessagesComponent
+      MessagesComponent,
+      GameCreatorComponent
    ],
    imports: [
       BrowserModule,

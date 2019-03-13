@@ -1,3 +1,4 @@
+
 .image{
     background-size:cover; 
     
@@ -19,5 +20,21 @@
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 20px;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.poster {
+  background-color: aliceblue; 
+  height: 290px;
+  width: 500px;
+  margin-left: 320px;
+}
+
+p {
+  font-size: 16px;
+  color: black;
+  text-decoration-color: black;
+  font-family: 'Playfair Display', serif;
+  margin-left: 10px;
+  margin-top: 15px;
 }
     
