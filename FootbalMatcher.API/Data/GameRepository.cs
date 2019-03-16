@@ -49,9 +49,9 @@ namespace FootbalMatcher.API.Data
             return game;
         }
 
-        public async Task<Game> GetGame(int id)
+        public async Task<IEnumerable<Game>> GetGame(int id)
         {
-            var game = await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
+            var game = await _context.Games.Where(x => x.HostId == id).ToListAsync();
 
             return game;
         }

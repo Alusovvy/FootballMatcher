@@ -19,10 +19,9 @@ namespace FootbalMatcher.API.Controllers
         }
         [HttpPost]
 
-        public async Task<IActionResult> CreateGame(Game game, int userId)
+        public async Task<IActionResult> CreateGame(Game game)
         {
             game.Location = game.Location.ToLower();
-            game.HostId = userId;
             await _game.CreateGame(game);
 
             return Ok(game);
@@ -30,9 +29,9 @@ namespace FootbalMatcher.API.Controllers
 
         [HttpPost("{id}")]
 
-        public IActionResult DeleteGame(int id) 
+        public async Task<IActionResult> DeleteGame(int id) 
         {
-            // await _game.DeleteGame(id);
+            await _game.DeleteGame(id);
 
 
             return Ok();
@@ -52,6 +51,14 @@ namespace FootbalMatcher.API.Controllers
 
         public async Task<IActionResult> GetGames(string location) 
         {
+            var isNumeric = int.TryParse(location, out int id);
+            if(isNumeric) {
+        
+             var createdGames = await _game.GetGame(id);
+
+             return Ok(createdGames);
+            } else {
+
             Game game = new Game();
             game.Location = location;
             if (game.Location == null)
@@ -60,15 +67,9 @@ namespace FootbalMatcher.API.Controllers
             var games = await _game.GetGames(game.Location);
 
             return Ok(games);
-        }
 
-        [HttpGet]
+            }
 
-        public async Task<IActionResult> GetGame(int id) {
-            
-            var game = await _game.GetGame(id);
-
-            return Ok(game);
         }
     }
 }

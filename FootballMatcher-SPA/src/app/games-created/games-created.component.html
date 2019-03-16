@@ -1,19 +1,11 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 <div class="image">
+  
   <div class="container">
     <div class="title1">
-      <h1>Nearest Games In Your Area!</h1>
+      <h1>Games that you hosted</h1>
     </div>
     <div class="selector">
-      <div class="title2">
-        Type game location:
-        <form #locationGameForm="ngForm" (ngSubmit)="findGame()">
-        <div class="form-group">
-            <input type="text" style="width: 200px" class="form-control" required name="location" [(ngModel)]="location" placeholder="Location">
-            <button class="btn btn-success mt-1" (onclick)="findGame()" type="submit">Search</button>
-          </div>
-        </form>
+
         <div *ngFor="let game of games" class="row">
           <div class="wraper">
             <div class="poster">
@@ -36,7 +28,7 @@
               <p>
                Empty Slots: {{game.slots}}
               </p>
-              <button style="margin-left: 5px;" class="btn btn-primary mt-1" (onclick)="findGame()" type="submit">Join Game</button>
+              <button style="margin-left: 5px;" class="btn btn-primary mt-1" type="submit">Join Game</button>
 
             </div>
           </div>
@@ -44,4 +36,3 @@
       </div>
     </div>
   </div>
-</div>

@@ -3,7 +3,7 @@ import { User } from './user';
 export interface Game {
     id: number;
     hostId: number;
-    Name: string;
+    name: string;
     hostName: string;
     location: string;
     description: string;

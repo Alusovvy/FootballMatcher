@@ -22,6 +22,15 @@ getGames(location): Observable<Game[]> {
   return this.http.get<Game[]>(this.baseUrl + 'games/' + location, httpOption);
 
 }
+
+createGames(game: Game) {
+  return  this.http.post(this.baseUrl + 'games', game, httpOption);
+
+}
+
+getGame(hostid): Observable<Game[]> {
+  return this.http.get<Game[]>(this.baseUrl + 'games/' + hostid, httpOption);
+}
 }
 
 

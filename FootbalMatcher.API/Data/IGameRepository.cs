@@ -12,6 +12,6 @@ namespace FootbalMatcher.API.Data
          Task<IEnumerable<Game>> GetGames(string location);
          Task<Game> JoinGame(User user, int id);
 
-         Task<Game> GetGame(int id);
+         Task<IEnumerable<Game>> GetGame(int id);
     }
 }
