@@ -27,4 +27,13 @@ export class GamesCreatedComponent implements OnInit {
       this.alertify.error(error);
     });
   }
+
+  deleteGame(id: any) {
+    this.gameService.deleteGame(id).subscribe(() => {
+      this.alertify.success('Game was deleted');
+    }, error => {
+      this.alertify.error(error);
+    }
+    );
+  }
   }

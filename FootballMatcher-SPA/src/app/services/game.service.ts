@@ -31,6 +31,10 @@ createGames(game: Game) {
 getGame(hostid): Observable<Game[]> {
   return this.http.get<Game[]>(this.baseUrl + 'games/' + hostid, httpOption);
 }
+deleteGame(id) {
+
+  return this.http.delete(this.baseUrl + 'games/' + id, httpOption);
+}
 }
 
 

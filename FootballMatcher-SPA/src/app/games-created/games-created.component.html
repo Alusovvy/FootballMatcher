@@ -6,7 +6,7 @@
     </div>
     <div class="selector">
 
-        <div *ngFor="let game of games" class="row">
+        <div value="game.id" *ngFor="let game of games" class="row">
           <div class="wraper">
             <div class="poster">
               
@@ -28,7 +28,7 @@
               <p>
                Empty Slots: {{game.slots}}
               </p>
-              <button style="margin-left: 5px;" class="btn btn-primary mt-1" type="submit">Join Game</button>
+              <button style="margin-left: 2px" class="btn btn-danger mt-1" type="submit" (click)="deleteGame(game.id)">Delete Game</button>
 
             </div>
           </div>
