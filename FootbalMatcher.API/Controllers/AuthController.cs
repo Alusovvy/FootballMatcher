@@ -18,9 +18,11 @@ namespace FootbalMatcher.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        private readonly IGameRepository _game;
+        public AuthController(IAuthRepository repo, IConfiguration config, IGameRepository game)
         {
-            
+            _game = game;
+
             _config = config;
             _repo = repo;
         }
@@ -77,9 +79,11 @@ namespace FootbalMatcher.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }
+
     }
 }

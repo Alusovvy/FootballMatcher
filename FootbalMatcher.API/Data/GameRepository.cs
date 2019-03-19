@@ -56,9 +56,14 @@ namespace FootbalMatcher.API.Data
             return game;
         }
 
-        public Task<Game> JoinGame(User user, int id)
+        public async Task<Game> JoinGame(int userId, int gameId)
         {
-            throw new System.NotImplementedException();
+            var game = await _context.Games.FirstOrDefaultAsync(x => x.Id == gameId);
+            var participant = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            game.Participants.Add(participant);
+            await _context.SaveChangesAsync();
+
+            return game;
         }
 
     }

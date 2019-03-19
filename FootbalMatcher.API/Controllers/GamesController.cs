@@ -17,6 +17,7 @@ namespace FootbalMatcher.API.Controllers
             _game = game;
 
         }
+
         [HttpPost]
 
         public async Task<IActionResult> CreateGame(Game game)
@@ -26,6 +27,7 @@ namespace FootbalMatcher.API.Controllers
 
             return Ok(game);
         }
+
 
         [HttpDelete("{id}")]
 

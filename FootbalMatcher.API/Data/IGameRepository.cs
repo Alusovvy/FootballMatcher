@@ -10,7 +10,7 @@ namespace FootbalMatcher.API.Data
          Task<Game> EditGame(Game game);
          Task<Game> DeleteGame(int id);
          Task<IEnumerable<Game>> GetGames(string location);
-         Task<Game> JoinGame(User user, int id);
+         Task<Game> JoinGame(int userId, int gameId);
 
          Task<IEnumerable<Game>> GetGame(int id);
     }
