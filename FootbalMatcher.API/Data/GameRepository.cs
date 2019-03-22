@@ -33,10 +33,20 @@ namespace FootbalMatcher.API.Data
             return game;
         }
 
-        public async Task<Game> EditGame(Game game)
+        public async Task<Game> EditGame(Game game, int userId)
         {
-           _context.Games.Update(game);
+            if(userId > 0) {
+            var gameToEdit = await _context.Games.FirstOrDefaultAsync(x => x.Id == game.Id);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            gameToEdit.Participants.Add(user);
+            await _context.SaveChangesAsync();
+            game = gameToEdit;
+
+            } else {
+            _context.Games.Update(game);
            await _context.SaveChangesAsync();
+            }
+
 
            return game;
 
@@ -44,24 +54,14 @@ namespace FootbalMatcher.API.Data
 
         public async Task<IEnumerable<Game>> GetGames(string location)
         {
-          var game = await  _context.Games.Where(x => x.Location == location).ToListAsync();
+          var game = await  _context.Games.Include("Participants").Where(x => x.Location == location).ToListAsync();
          
             return game;
         }
 
         public async Task<IEnumerable<Game>> GetGame(int id)
         {
-            var game = await _context.Games.Where(x => x.HostId == id).ToListAsync();
-
-            return game;
-        }
-
-        public async Task<Game> JoinGame(int userId, int gameId)
-        {
-            var game = await _context.Games.FirstOrDefaultAsync(x => x.Id == gameId);
-            var participant = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
-            game.Participants.Add(participant);
-            await _context.SaveChangesAsync();
+            var game = await _context.Games.Include("Participants").Where(x => x.HostId == id).ToListAsync();
 
             return game;
         }

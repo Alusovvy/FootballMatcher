@@ -14,7 +14,7 @@
             <button class="btn btn-success mt-1" (onclick)="findGame()" type="submit">Search</button>
           </div>
         </form>
-        <div *ngFor="let game of games" class="row">
+        <div value="game.id" *ngFor="let game of games" class="row">
           <div class="wraper">
             <div class="poster">
               
@@ -36,7 +36,7 @@
               <p>
                Empty Slots: {{game.slots}}
               </p>
-              <button style="margin-left: 5px;" class="btn btn-primary mt-1" (onclick)="findGame()" type="submit">Join Game</button>
+              <button style="margin-left: 5px;" class="btn btn-primary mt-1" (click)="joinGame(game.id)" type="submit">Join Game</button>
 
             </div>
           </div>

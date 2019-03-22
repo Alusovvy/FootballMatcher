@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Game } from '../models/game';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 const httpOption = {
@@ -35,6 +36,10 @@ deleteGame(id) {
 
   return this.http.delete(this.baseUrl + 'games/' + id, httpOption);
 }
+editGame(gameId, userId) {
+  return this.http.put(this.baseUrl + 'games/' + userId, gameId, httpOption);
 }
+}
+
 
 

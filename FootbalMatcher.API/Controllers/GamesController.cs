@@ -39,15 +39,18 @@ namespace FootbalMatcher.API.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{userId}")]
 
-        public async Task<IActionResult> EditGame(Game game, int id)
+        public async Task<IActionResult> EditGame(Game game, int userId)
         {
-            game.Id = id;
-            await _game.EditGame(game);
+            if (game.Location != null) {
+                game.Location.ToLower();
+            }
+            await _game.EditGame(game, userId);
 
             return Ok(game);
         }
+
 
         [HttpGet("{location}")]
 

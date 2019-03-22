@@ -14,5 +14,10 @@ namespace FootbalMatcher.API.Models
         public DateTime Date { get; set; }
         public int Slots { get; set; }
         public List<User> Participants { get; set; }
-    }
+
+        public Game()
+        {
+            this.Participants = new List<User>();
+        }
+    }   
 }
