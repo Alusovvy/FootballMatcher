@@ -16,6 +16,7 @@ export class GameListComponent implements OnInit {
   games: Game[];
   userId: number;
   game: Game = {};
+  
   constructor(private gameService: GameService, private alertify: AlertifyService) { }
 
   ngOnInit() {
