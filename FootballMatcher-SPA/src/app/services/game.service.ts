@@ -39,6 +39,7 @@ deleteGame(id) {
 editGame(gameId, userId) {
   return this.http.put(this.baseUrl + 'games/' + userId, gameId, httpOption);
 }
+
 }
 
 

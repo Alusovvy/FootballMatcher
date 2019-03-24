@@ -16,7 +16,6 @@ export class GameListComponent implements OnInit {
   games: Game[];
   userId: number;
   game: Game = {};
-  
   constructor(private gameService: GameService, private alertify: AlertifyService) { }
 
   ngOnInit() {
@@ -41,6 +40,16 @@ export class GameListComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  isAvaible(members: any, slots: number) {
+    console.log(members.length);
+    console.log(slots);
+    if (members.length >= slots) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }

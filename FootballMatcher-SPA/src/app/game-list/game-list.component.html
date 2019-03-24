@@ -14,7 +14,7 @@
             <button class="btn btn-success mt-1" (onclick)="findGame()" type="submit">Search</button>
           </div>
         </form>
-        <div value="game.id" *ngFor="let game of games" class="row">
+        <div value="game.participants" *ngFor="let game of games" class="row">
           <div class="wraper">
             <div class="poster">
               
@@ -34,9 +34,10 @@
                 Date : {{game.date}}
               </p>
               <p>
-               Empty Slots: {{game.slots}}
+                Slots: {{game.participants.length}} / {{game.slots}}
               </p>
-              <button style="margin-left: 5px;" class="btn btn-primary mt-1" (click)="joinGame(game.id)" type="submit">Join Game</button>
+              <button *ngIf="isAvaible(game.participants, game.slots)" style="margin-left: 5px;" class="btn btn-primary mt-1" (click)="joinGame(game.id)" type="submit">Join Game</button>
+              <button [disabled]="true" *ngIf="!isAvaible(game.participants, game.slots)" style="margin-left: 5px;" class="btn btn-danger mt-1" (click)="joinGame(game.id)" type="submit">Game is Full</button>
 
             </div>
           </div>

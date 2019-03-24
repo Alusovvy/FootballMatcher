@@ -6,7 +6,7 @@
     </div>
     <div class="selector">
 
-        <div value="game.id" *ngFor="let game of games" class="row">
+        <!-- <div value="game.id" *ngFor="let game of games" class="row">
           <div class="wraper">
             <div class="poster">
               
@@ -28,11 +28,34 @@
               <p>
                Empty Slots: {{game.slots}}
               </p>
-              <button style="margin-left: 2px" class="btn btn-danger mt-1" type="submit" (click)="deleteGame(game.id)">Delete Game</button>
+              <button style="margin-left: 2px" class="btn btn-danger mt-1" type="submit" (click)="deleteGame(game.id)">Delete Game</button> -->
+              <form value="game.id" *ngFor="let game of games" #gameCreateForm="ngForm">
 
+                <hr>
+              
+                <div  class="form-group">
+                  <input type="text" class="form-control" required name="name" [(ngModel)]="game.name" placeholder="{{game.name}}">
+                </div>
+              
+            <div class="form-group">
+                  <input type="text" class="form-control" required name="description" [(ngModel)]="game.description" placeholder="{{game.description}}">
+                </div>
+              <div class="form-group">
+                    <input type="text" class="form-control" required name="location" [(ngModel)]="game.location" placeholder="{{game.location}}">
+                  </div>
+              <div class="form-group">
+                      <input type="text" class="form-control" required name="slots" [(ngModel)]="game.slots" placeholder="{{game.slots}}">
+                    </div>
+              
+                <div class="form-group text-center">
+                  <button class="btn btn-success mr-1" type="submit" (click)="updateGame(game)" >Update</button>
+                  <button style="margin-left: 2px" class="btn btn-danger mt-1" type="submit" (click)="deleteGame(game.id)">Delete Game</button>
+                </div>
+                
+              </form>
             </div>
           </div>
         </div>
-      </div>
+      <!-- </div>
     </div>
-  </div>
+  </div> -->

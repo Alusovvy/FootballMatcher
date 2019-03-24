@@ -23,10 +23,11 @@
 }
 
 .poster {
-  background-color: aliceblue; 
+  background-image: url('https://st.depositphotos.com/1672894/4844/v/950/depositphotos_48446287-stockillustratie-voetbal-op-blauwe-achtergrond.jpg');
   height: 290px;
   width: 500px;
   margin-left: 320px;
+  text-decoration-color: antiquewhite;
 }
 
 p {
